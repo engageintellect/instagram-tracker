@@ -1,0 +1,5 @@
+.env
+__pycache__/
+instagram_tracking/*.json
+instagram_tracking/history/
+
