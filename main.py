@@ -6,6 +6,14 @@ from datetime import datetime
 from typing import List
 from dotenv import load_dotenv
 
+try:
+    from pyfiglet import Figlet
+    f = Figlet(font='cybermedium')
+    print(f.renderText('ig-tracker'))
+except ImportError:
+    print("\n=== IG TRACKER ===\n")
+
+
 # Load environment variables
 load_dotenv()
 TARGET_USERNAME = os.getenv("TARGET_USERNAME")
