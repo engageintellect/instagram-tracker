@@ -15,6 +15,7 @@ Track changes in an Instagram profile's followers and following lists over time 
 - All users are output as **clickable Instagram links**
 - Summary stats with **net gain/loss**
 - Optional `--dry-run` mode to preview changes without saving
+- Includes an optional `pyfiglet` ASCII banner ("ig-tracker")
 - Fully local and private — no remote logging or storage
 
 ---
@@ -41,9 +42,10 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-> Or manually:
+If you don't want to use the full requirements file, install the core packages manually:
+
 ```bash
-pip install instaloader python-dotenv
+pip install instaloader python-dotenv pyfiglet
 ```
 
 ---
@@ -89,10 +91,11 @@ python3 main.py
 ```
 
 Each run will:
+- Display an ASCII banner: `ig-tracker`
 - Compare current followers/following to the last saved snapshot
-- Print changes in the terminal
-- Save the latest state to disk
-- Save a Markdown changelog with clickable profile links
+- Print changes in the terminal (with clickable profile links)
+- Save a Markdown changelog per run
+- Save updated snapshot `.json` files
 
 ### Preview changes only (no saving):
 
@@ -106,15 +109,16 @@ python3 main.py --dry-run
 
 ```
 instagram-tracker/
-├── main.py         # Main script
-├── .env                                 # Your actual config (not committed)
-├── .env.example                         # Shared template
+├── main.py                          # Main script
+├── .env                             # Your actual config (not committed)
+├── .env.example                     # Shared template
 ├── .gitignore
+├── requirements.txt                 # Installed dependencies
 └── instagram_tracking/
-    ├── followers.json                   # Latest followers list
-    ├── following.json                   # Latest following list
+    ├── followers.json               # Latest followers list
+    ├── following.json               # Latest following list
     └── history/
-        └── 2025-07-18_17-48-15_ig_username.md  # Timestamped changelog
+        └── 2025-07-18_17-48-15_username.md  # Timestamped changelog
 ```
 
 ---
@@ -132,4 +136,5 @@ rm instagram_tracking/*.json
 ## 🤝 Credits
 
 - Built with ❤️ using [Instaloader](https://instaloader.github.io/)
+- ASCII banners via [pyfiglet](https://github.com/pwaller/pyfiglet)
 
